@@ -1,6 +1,7 @@
 package main
 
 import (
+	"io"
 	"net/http"
 	"strings"
 )
@@ -9,7 +10,7 @@ const graphite_address = "graphite:2003"
 
 func graphite_send(value, path string) error {
 	valueReader := strings.NewReader(path + " " + value + " -1\n")
-	resp, err := http.Post("http://"+graphite_address, "text/plain", valueReader)
+	resp, err := http.Post("http://"+graphite_address, "text/plain", io.NopCloser(valueReader))
 	if err != nil {
 		return err
 	}
