@@ -1,0 +1,1 @@
+Service able to poll for or receive data in the needed format, sending them all to Graphite.
