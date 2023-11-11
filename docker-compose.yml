@@ -2,6 +2,7 @@
 services:
   extract:
     image: sprecometer/extract
+    build: .
     ports:
       - "8280:8280"
   graphite:
